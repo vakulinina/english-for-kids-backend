@@ -15,16 +15,21 @@ interface UrlParams {
 }
 
 const GameField: React.FunctionComponent = () => {
-  const flippedClass = 'flipped';
-
   const { category } = useParams() as UrlParams;
 
-  const cards = data[category];
+  const cards: Card[] = data[category];
 
   return (
     <main className="game-field">
       <ul className="cards">
-        {cards.map(({ image, word, translation }: Card) => <GameCard image={image} word={word} translation={translation} key={word} />)}
+        {cards.map(({ image, word, translation }) => (
+          <GameCard
+            image={image}
+            word={word}
+            translation={translation}
+            key={word}
+          />
+        ))}
       </ul>
     </main>
   );

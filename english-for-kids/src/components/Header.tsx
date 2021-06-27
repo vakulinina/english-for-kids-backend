@@ -18,9 +18,9 @@ const Header: React.FunctionComponent = () => {
         </div>
       </nav>
 
-      <label className="theme-toggle">
-        <input className="toggle-input visually-hidden" type="checkbox" />
-        <span className="toggle-fill"></span>
+      <label className="mode-toggle" htmlFor="mode-input">
+        <input className="toggle-input visually-hidden" type="checkbox" id="mode-input" />
+        <span className="toggle-fill" />
       </label>
 
     </header>

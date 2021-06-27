@@ -1,3 +1,7 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable react/button-has-type */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState } from 'react';
 
 interface Props {
@@ -30,9 +34,9 @@ const GameCard: React.FunctionComponent<Props> = ({ image, word, translation }: 
             className="flip-button"
             onClick={(e) => {
               setIsFlipped(true);
-              e.stopPropagation()
-            }}>
-          </button>
+              e.stopPropagation();
+            }}
+          />
         </div>
         <div className="back">
           <div className="image-container">
@@ -42,7 +46,7 @@ const GameCard: React.FunctionComponent<Props> = ({ image, word, translation }: 
         </div>
       </div>
     </li>
-  )
+  );
 };
 
 export default GameCard;

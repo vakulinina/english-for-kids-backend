@@ -12,6 +12,12 @@
   "parserOptions": {
     "project": "./tsconfig.json"
   },
-  "plugins": ["@typescript-eslint"],
-  "ignorePatterns": ["*.config.js", "node_modules/", "dist/"]
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "ignorePatterns": [
+    "*.config.js",
+    "node_modules/",
+    "dist/"
+  ]
 }
