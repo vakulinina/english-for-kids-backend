@@ -9,9 +9,15 @@ interface Props {
 const GameCard: React.FunctionComponent<Props> = ({ image, word, translation }: Props) => {
   const [isFlipped, setIsFlipped] = useState(false);
 
+  const sound = new Audio(`sounds/${word}.mp3`);
+  const playSound = () => {
+    sound.play();
+  };
+
   return (
     <li
       className="card"
+      onClick={playSound}
       onMouseLeave={() => setIsFlipped(false)}
     >
       <div className={isFlipped ? 'content flipped' : 'content'}>
@@ -20,7 +26,13 @@ const GameCard: React.FunctionComponent<Props> = ({ image, word, translation }: 
             <img className="card-image" src={image} alt="" />
           </div>
           <p className="word">{word}</p>
-          <button className="flip-button" onClick={() => setIsFlipped(true)}></button>
+          <button
+            className="flip-button"
+            onClick={(e) => {
+              setIsFlipped(true);
+              e.stopPropagation()
+            }}>
+          </button>
         </div>
         <div className="back">
           <div className="image-container">
@@ -30,7 +42,7 @@ const GameCard: React.FunctionComponent<Props> = ({ image, word, translation }: 
         </div>
       </div>
     </li>
-  );
+  )
 };
 
 export default GameCard;
