@@ -63,7 +63,7 @@ ul {
 }
 
 .menu-toggle,
-.menu-toggle input {
+.menu-toggle-input {
   display: block;
   position: absolute;
 }
@@ -94,7 +94,6 @@ ul {
   width: 100%;
   height: 45px;
   max-width: 1350px;
-
 }
 
 .menu-toggle span,
@@ -137,7 +136,7 @@ ul {
   height: 0;
 }
 
-.menu-toggle input {
+.menu-toggle-input {
   width: 40px;
   height: 32px;
   top: -7px;
@@ -188,6 +187,7 @@ ul {
   content: "train";
   margin-left: 10px;
   color: white;
+  font-size: 14px;
   text-transform: uppercase;
 }
 

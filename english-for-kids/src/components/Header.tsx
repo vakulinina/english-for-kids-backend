@@ -2,19 +2,19 @@ import React, { useState } from 'react';
 import Menu from './menu';
 
 const Header: React.FunctionComponent = () => {
-  const [show, setShow] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <header className="header-container">
       <nav>
-        <div className={show ? 'menu-toggle menu-toggle-active' : 'menu-toggle'}>
+        <div className={isMenuOpen ? 'menu-toggle menu-toggle-active' : 'menu-toggle'}>
           <input
             type="checkbox"
             className="menu-toggle-input"
-            onClick={() => setShow(!show)}
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
           />
           <span />
-          <Menu isMenuOpen={show} />
+          <Menu isMenuOpen={isMenuOpen} hideMenu={() => setIsMenuOpen(!isMenuOpen)} />
         </div>
       </nav>
 

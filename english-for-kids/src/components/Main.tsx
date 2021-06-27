@@ -1,15 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import data from '../data/cards.json';
 
 const Main: React.FunctionComponent = () => (
   <main className="main-container">
-    {/* {Object.keys(data).map(key => (
-      <Link className="main-card green" to={`/${key}`} key="key">
-        <img src={data[key][0].image} alt="action" />
-        {data[key][0].category}
-      </Link>
-    ))} */}
     <Link className="main-card green" to="/action-a">
       <img src="images/action-set-a/jump.jpg" alt="action" />
       Action (set A)
