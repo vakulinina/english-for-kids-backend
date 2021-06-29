@@ -11,10 +11,14 @@ interface Card {
 }
 
 interface UrlParams {
-  category: string
+  category: string,
 }
 
-const GameField: React.FunctionComponent = () => {
+interface Props {
+  isGameMode: boolean,
+}
+
+const GameField: React.FunctionComponent<Props> = ({ isGameMode }: Props) => {
   const { category } = useParams() as UrlParams;
 
   const cards: Card[] = data[category];
@@ -28,9 +32,13 @@ const GameField: React.FunctionComponent = () => {
             word={word}
             translation={translation}
             key={word}
+            isGameMode={isGameMode}
           />
         ))}
       </ul>
+      {isGameMode
+        ? <button className="start-button" type="button">start</button>
+        : ''}
     </main>
   );
 };

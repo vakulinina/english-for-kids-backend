@@ -7,26 +7,34 @@ import React, { useState } from 'react';
 interface Props {
   image: string,
   word: string,
-  translation: string
+  translation: string,
+  isGameMode: boolean
 }
 
-const GameCard: React.FunctionComponent<Props> = ({ image, word, translation }: Props) => {
+const GameCard: React.FunctionComponent<Props> = ({
+  image, word, translation, isGameMode,
+}: Props) => {
   const [isFlipped, setIsFlipped] = useState(false);
 
   const sound = new Audio(`sounds/${word}.mp3`);
-  const playSound = () => {
-    sound.play();
+  const handleCardClick = () => {
+    if (!isFlipped && !isGameMode) {
+      sound.play();
+    }
   };
+
+  const flippedClass = isFlipped ? 'flipped' : '';
+  const gameModeImageClass = isGameMode ? 'image-container-game' : '';
 
   return (
     <li
       className="card"
-      onClick={playSound}
+      onClick={handleCardClick}
       onMouseLeave={() => setIsFlipped(false)}
     >
-      <div className={isFlipped ? 'content flipped' : 'content'}>
+      <div className={`content ${flippedClass}`}>
         <div className="front">
-          <div className="image-container">
+          <div className={`image-container ${gameModeImageClass}`}>
             <img className="card-image" src={image} alt="" />
           </div>
           <p className="word">{word}</p>
