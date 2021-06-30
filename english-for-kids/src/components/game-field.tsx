@@ -16,9 +16,10 @@ interface UrlParams {
 
 interface Props {
   isGameMode: boolean,
+  countMistakes: (mistakes: number) => void,
 }
 
-const GameField: React.FunctionComponent<Props> = ({ isGameMode }: Props) => {
+const GameField: React.FunctionComponent<Props> = ({ isGameMode, countMistakes }: Props) => {
   const { category } = useParams() as UrlParams;
   const history = useHistory();
 
@@ -39,9 +40,12 @@ const GameField: React.FunctionComponent<Props> = ({ isGameMode }: Props) => {
         card.classList.add('disabled');
         new Audio('./sounds/correct.mp3').play();
 
-        if (currentWordIndex < words.length - 1) {
+        if (currentWordIndex < words.length - 6) {
           currentWordIndex += 1;
           setTimeout(playWord, 1000);
+        } else {
+          countMistakes(mistakes);
+          setTimeout(() => history.push('/final-page'), 1000);
         }
       } else {
         mistakes += 1;
