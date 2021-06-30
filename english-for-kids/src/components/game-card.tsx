@@ -31,6 +31,7 @@ const GameCard: React.FunctionComponent<Props> = ({
       className="card"
       onClick={handleCardClick}
       onMouseLeave={() => setIsFlipped(false)}
+      data-word={word}
     >
       <div className={`content ${flippedClass}`}>
         <div className="front">

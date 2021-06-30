@@ -243,6 +243,12 @@ ul {
   perspective: 700px;
 }
 
+.disabled {
+  transform: scale(0.9);
+  filter: blur(4px);
+  pointer-events: none;
+}
+
 .content {
   position: absolute;
   width: 100%;
