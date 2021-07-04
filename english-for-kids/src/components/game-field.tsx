@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import data from '../data/cards.json';
 import GameCard from './game-card';
@@ -22,6 +22,8 @@ interface Props {
 const GameField: React.FunctionComponent<Props> = ({ isGameMode, countMistakes }: Props) => {
   const { category } = useParams() as UrlParams;
   const history = useHistory();
+  const [isGameStarted, setIsGameStarted] = useState(false);
+  const [currentAudio, setCurrentAudio] = useState(null as HTMLAudioElement | null);
 
   const cards: Card[] = data[category];
   const words = cards.map(({ word }) => word);
@@ -31,8 +33,12 @@ const GameField: React.FunctionComponent<Props> = ({ isGameMode, countMistakes }
     let currentWordIndex = 0;
     let mistakes = 0;
 
+    setIsGameStarted(true);
+
     const playWord = () => {
-      new Audio(`./sounds/${words[currentWordIndex]}.mp3`).play();
+      const audio = new Audio(`./sounds/${words[currentWordIndex]}.mp3`);
+      audio.play();
+      setCurrentAudio(audio);
     };
 
     const handleGameCardClick = (card: HTMLLIElement) => {
@@ -58,6 +64,14 @@ const GameField: React.FunctionComponent<Props> = ({ isGameMode, countMistakes }
     playWord();
   };
 
+  const handleGameButton = () => {
+    if (isGameStarted) {
+      currentAudio?.play();
+    } else {
+      playGame();
+    }
+  };
+
   return (
     <main className="game-field">
       <ul className="cards">
@@ -72,7 +86,7 @@ const GameField: React.FunctionComponent<Props> = ({ isGameMode, countMistakes }
         ))}
       </ul>
       {isGameMode
-        ? <button className="start-button" type="button" onClick={playGame}>start</button>
+        ? <button className="game-button" type="button" onClick={handleGameButton}>{isGameStarted ? 'repeat' : 'start'}</button>
         : ''}
     </main>
   );
