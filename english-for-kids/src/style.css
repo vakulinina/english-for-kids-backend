@@ -341,3 +341,17 @@ ul {
   height: 1px;
   margin: -1px;
 }
+
+.game-score {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  max-width: 528px;
+  overflow: hidden;
+}
+
+.score-star {
+  width: 34px;
+  margin: 0 5px;
+  flex-shrink: 0;
+}

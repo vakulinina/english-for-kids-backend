@@ -26,7 +26,7 @@ const Header: React.FunctionComponent<Props> = ({ handleChange, isGameMode }: Pr
           />
         </div>
       </nav>
-
+      <div className="game-score" />
       <label className="mode-toggle" htmlFor="mode-input">
         <input
           className="toggle-input visually-hidden"

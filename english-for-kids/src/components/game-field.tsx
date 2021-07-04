@@ -42,20 +42,31 @@ const GameField: React.FunctionComponent<Props> = ({ isGameMode, countMistakes }
     };
 
     const handleGameCardClick = (card: HTMLLIElement) => {
+      const scoreField = document.querySelector('.game-score') as HTMLDivElement;
+      const star = document.createElement('img') as HTMLImageElement;
+      star.classList.add('score-star');
+
       if (words[currentWordIndex] === card.dataset.word) {
         card.classList.add('disabled');
         new Audio('./sounds/correct.mp3').play();
+        star.src = './icons/star-correct.png';
+        scoreField.append(star);
 
         if (currentWordIndex < words.length - 6) {
           currentWordIndex += 1;
           setTimeout(playWord, 1000);
         } else {
           countMistakes(mistakes);
-          setTimeout(() => history.push('/final-page'), 1000);
+          setTimeout(() => {
+            history.push('/final-page');
+            scoreField.innerHTML = '';
+          }, 1000);
         }
       } else {
         mistakes += 1;
         new Audio('./sounds/error.mp3').play();
+        star.src = './icons/star-error.png';
+        scoreField.append(star);
       }
     };
 
