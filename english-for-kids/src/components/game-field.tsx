@@ -26,7 +26,7 @@ const GameField: React.FunctionComponent<Props> = ({ isGameMode, countMistakes }
   const [currentAudio, setCurrentAudio] = useState(null as HTMLAudioElement | null);
 
   const cards: Card[] = data[category];
-  const words = cards.map(({ word }) => word);
+  const words = cards.map(({ word }) => word).sort(() => Math.random() - 0.5);
 
   const playGame = () => {
     const gameCards = document.querySelectorAll('.card') as NodeListOf<HTMLLIElement>;
@@ -52,7 +52,7 @@ const GameField: React.FunctionComponent<Props> = ({ isGameMode, countMistakes }
         star.src = './icons/star-correct.png';
         scoreField.append(star);
 
-        if (currentWordIndex < words.length - 6) {
+        if (currentWordIndex < words.length - 1) {
           currentWordIndex += 1;
           setTimeout(playWord, 1000);
         } else {

@@ -16,7 +16,8 @@ const FinalPage: React.FunctionComponent<Props> = ({ mistakes }: Props) => {
 
   return (
     <main>
-      <h1>{`Game over, you made ${mistakes} mistake(s)`}</h1>
+      <p className="final-icon">{mistakes ? '😔' : '👍'}</p>
+      <p className="final-text">{mistakes ? `You made ${mistakes} mistake(s)` : 'Good job!'}</p>
     </main>
   );
 };

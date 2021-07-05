@@ -359,6 +359,17 @@ ul {
   flex-shrink: 0;
 }
 
+.final-icon {
+  text-align: center;
+  font-size: 80px;
+  margin-bottom: 20px;
+}
+
+.final-text {
+  text-align: center;
+  font-size: 20px;
+}
+
 @media screen and (max-width: 1150px) {
   .main-container {
     grid-template-columns: repeat(2,1fr);
