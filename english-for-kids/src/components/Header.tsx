@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useState } from 'react';
 import Menu from './menu';
 
@@ -24,6 +26,7 @@ const Header: React.FunctionComponent<Props> = ({ handleChange, isGameMode }: Pr
             isGameMode={isGameMode}
             hideMenu={() => setIsMenuOpen(!isMenuOpen)}
           />
+          {isMenuOpen ? <div className="menu-background" onClick={() => setIsMenuOpen(!isMenuOpen)} /> : ''}
         </div>
       </nav>
       <div className="game-score" />
@@ -36,7 +39,6 @@ const Header: React.FunctionComponent<Props> = ({ handleChange, isGameMode }: Pr
         />
         <span className="toggle-fill" />
       </label>
-
     </header>
   );
 };
