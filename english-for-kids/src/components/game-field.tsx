@@ -20,7 +20,10 @@ interface Props {
   countMistakes: (mistakes: number) => void,
 }
 
-const GameField: React.FunctionComponent<Props> = ({ isGameMode, countMistakes }: Props) => {
+const GameField: React.FunctionComponent<Props> = ({
+  isGameMode,
+  countMistakes,
+}: Props) => {
   const { category } = useParams() as UrlParams;
   const history = useHistory();
   const [isGameStarted, setIsGameStarted] = useState(false);
@@ -31,7 +34,9 @@ const GameField: React.FunctionComponent<Props> = ({ isGameMode, countMistakes }
   let currentWordIndex = 0;
   let mistakes = 0;
 
-  useEffect(() => { if (isGameStarted) setIsGameStarted(false); }, []);
+  useEffect(() => {
+    setIsGameStarted(false);
+  }, [category]);
 
   const playWord = () => {
     const audio = new Audio(`./sounds/${words[currentWordIndex]}.mp3`);
