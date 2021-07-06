@@ -3,6 +3,7 @@ import { useParams, useHistory } from 'react-router-dom';
 import data from '../data/cards.json';
 import GameCard from './game-card';
 import GameButton from './game-button';
+import { updateStatistics } from './statistics';
 
 interface Card {
   word: string,
@@ -29,7 +30,9 @@ const GameField: React.FunctionComponent<Props> = ({
   const [isGameStarted, setIsGameStarted] = useState(false);
   const [currentAudio, setCurrentAudio] = useState(null as HTMLAudioElement | null);
 
-  const cards: Card[] = data[category];
+  const cards: Card[] = category === 'difficult-words'
+    ? JSON.parse(localStorage.getItem('difficult-words') as string)
+    : data[category];
   const words = cards.map(({ word }) => word).sort(() => Math.random() - 0.5);
   let currentWordIndex = 0;
   let mistakes = 0;
@@ -52,6 +55,8 @@ const GameField: React.FunctionComponent<Props> = ({
     if (words[currentWordIndex] === card.dataset.word) {
       card.classList.add('disabled');
       new Audio('./sounds/correct.mp3').play();
+      updateStatistics(`${words[currentWordIndex]}`, 'correct');
+
       star.src = './icons/star-correct.png';
       scoreField.append(star);
 
@@ -68,6 +73,8 @@ const GameField: React.FunctionComponent<Props> = ({
     } else {
       mistakes += 1;
       new Audio('./sounds/error.mp3').play();
+      updateStatistics(`${words[currentWordIndex]}`, 'wrong');
+
       star.src = './icons/star-error.png';
       scoreField.append(star);
     }

@@ -3,6 +3,7 @@
 /* eslint-disable react/button-has-type */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState } from 'react';
+import { updateStatistics } from './statistics';
 
 interface Props {
   image: string,
@@ -19,6 +20,7 @@ const GameCard: React.FunctionComponent<Props> = ({
   const sound = new Audio(`sounds/${word}.mp3`);
   const handleCardClick = () => {
     if (!isFlipped && !isGameMode) {
+      updateStatistics(`${word}`, 'clicks');
       sound.play();
     }
   };

@@ -384,6 +384,91 @@ ul {
   font-size: 20px;
 }
 
+.statistics {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 20px;
+}
+
+.statistics-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 270px;
+}
+
+.repeat-words-button,
+.reset-statistics-button {
+  height: 40px;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  background-color: #00ac97;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.158);
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.statistics-table-container {
+  width: 80vw;
+  max-width: 1000px;
+  height: 75vh;
+  overflow: auto;
+}
+
+.statistics-table {
+  width: 100%;
+  min-width: 700px;
+  border-collapse: collapse;
+}
+
+tbody tr:nth-child(2n + 1) {
+  background-color: rgba(0, 0, 0, 0.075);
+}
+
+table {
+  position: relative;
+}
+
+thead {
+  position: sticky;
+  top: 0;
+  background-color: white;
+}
+
+th, td {
+  height: 25px;
+  text-align: center;
+  font-size: 18px;
+  line-height: 160%;
+  letter-spacing: 1.2px;
+  white-space: nowrap;
+}
+
+th:nth-child(1),
+th:nth-child(2),
+th:nth-child(3),
+td:nth-child(1),
+td:nth-child(2),
+td:nth-child(3) {
+  width: 20%;
+}
+
+th:nth-child(4),
+th:nth-child(5),
+th:nth-child(6),
+th:nth-child(7),
+td:nth-child(4),
+td:nth-child(5),
+td:nth-child(6),
+td:nth-child(7) {
+  width: 10%;
+}
+
+th:hover {
+  cursor: pointer;
+}
+
 @media screen and (max-width: 1150px) {
   .main-container {
     grid-template-columns: repeat(2,1fr);
@@ -416,6 +501,10 @@ ul {
     width: 200px;
     height: 200px;
     perspective: 700px;
+  }
+
+  th, td {
+    font-size: 16px;
   }
 }
 

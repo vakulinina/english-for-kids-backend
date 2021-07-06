@@ -4,6 +4,7 @@ import Header from './header';
 import Main from './main';
 import GameField from './game-field';
 import FinalPage from './final-page';
+import Statistics from './statistics';
 
 const App: React.FunctionComponent = () => {
   const [isGameMode, setIsGameMode] = useState(false);
@@ -14,6 +15,7 @@ const App: React.FunctionComponent = () => {
       <Router>
         <Header handleChange={() => setIsGameMode(!isGameMode)} isGameMode={isGameMode} />
         <Switch>
+          <Route path="/statistics" component={Statistics} />
           <Route path="/final-page">
             <FinalPage mistakes={mistakes} />
           </Route>

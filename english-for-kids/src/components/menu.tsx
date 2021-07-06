@@ -20,6 +20,7 @@ const Menu: React.FunctionComponent<Props> = ({ isMenuOpen, hideMenu, isGameMode
           {data[key][0].category}
         </NavLink>
       ))}
+      <NavLink className="menu-item" to="/statistics" onClick={hideMenu}>Statistics</NavLink>
     </ul>
   );
 };
