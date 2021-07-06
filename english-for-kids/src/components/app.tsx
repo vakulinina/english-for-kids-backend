@@ -5,6 +5,7 @@ import Main from './main';
 import GameField from './game-field';
 import FinalPage from './final-page';
 import Statistics from './statistics';
+import Footer from './footer';
 
 const App: React.FunctionComponent = () => {
   const [isGameMode, setIsGameMode] = useState(false);
@@ -26,6 +27,7 @@ const App: React.FunctionComponent = () => {
             <Main isGameMode={isGameMode} />
           </Route>
         </Switch>
+        <Footer />
       </Router>
     </>
   );

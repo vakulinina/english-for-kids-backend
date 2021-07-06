@@ -22,7 +22,7 @@ ul {
   grid-gap: 15px;
   justify-items: center;
   max-width: 1440px;
-  margin: auto;
+  margin: 0 auto 125px;
 }
 
 .main-card {
@@ -234,6 +234,7 @@ ul {
 }
 
 .game-field {
+  margin-bottom: 100px;
   text-align: center;
 }
 
@@ -389,6 +390,7 @@ ul {
   flex-direction: column;
   align-items: center;
   row-gap: 20px;
+  height: calc(100vh - (125px + 45px));
 }
 
 .statistics-buttons {
@@ -412,7 +414,6 @@ ul {
 .statistics-table-container {
   width: 80vw;
   max-width: 1000px;
-  height: 75vh;
   overflow: auto;
 }
 
@@ -467,6 +468,29 @@ td:nth-child(7) {
 
 th:hover {
   cursor: pointer;
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+  height: 45px;
+}
+
+.contacts {
+  display: flex;
+  height: 60%;
+}
+
+.footer-link {
+  height: 100%;
+  margin-right: 30px;
+}
+
+.footer-link img {
+  height: 100%;
 }
 
 @media screen and (max-width: 1150px) {
