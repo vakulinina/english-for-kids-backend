@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import {
-  getCategoryById, getCategories, deleteCategory, createCategory, getWordsByCategory,
+  getCategoryById, getCategories, deleteCategory, createCategory, getCardsByCategory,
 } from './repository';
 import Category from './category';
 
@@ -43,7 +43,7 @@ router.post('/', async (req, res) => {
 
 router.get('/:id/words', async (req, res) => {
   const categoryId = req.params.id;
-  const words = await getWordsByCategory(categoryId);
+  const words = await getCardsByCategory(categoryId);
   return res.json(words);
 });
 
