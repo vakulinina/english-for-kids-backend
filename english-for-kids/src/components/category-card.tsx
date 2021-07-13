@@ -1,11 +1,21 @@
 import React, { useState } from 'react';
+import { deleteCategory } from '../api/api';
 
 interface Props {
   title: string;
+  categoryId: string;
+  onUpdateCategories: () => void;
 }
 
-const CategoryCard: React.FunctionComponent<Props> = ({ title }: Props) => {
+const CategoryCard: React.FunctionComponent<Props> = ({
+  title, categoryId, onUpdateCategories,
+}: Props) => {
   const [isEditMode, setIsEditMode] = useState(false);
+
+  const handleDeleteClick = async () => {
+    await deleteCategory(categoryId);
+    onUpdateCategories();
+  };
 
   return (
     <li className="admin-category-card">
@@ -26,18 +36,18 @@ const CategoryCard: React.FunctionComponent<Props> = ({ title }: Props) => {
         {isEditMode
           ? (
             <>
-              <button className="card-button button-edit-mode" type="button" onClick={() => setIsEditMode(false)}>Save</button>
-              <button className="card-button button-edit-mode cancel-button" type="button" onClick={() => setIsEditMode(false)}>Cancel</button>
+              <button className="card-button button-edit-mode" onClick={() => setIsEditMode(false)} type="button">Save</button>
+              <button className="card-button button-edit-mode cancel-button" onClick={() => setIsEditMode(false)} type="button">Cancel</button>
             </>
           )
           : (
             <>
-              <button className="card-button" type="button" onClick={() => setIsEditMode(true)}>Update</button>
+              <button className="card-button" onClick={() => setIsEditMode(true)} type="button">Update</button>
               <button className="card-button" type="button">Add word</button>
             </>
           )}
       </div>
-      <button className="delete-button" type="button">Delete</button>
+      <button className="delete-button" onClick={handleDeleteClick} type="button">Delete</button>
     </li>
   );
 };

@@ -14,10 +14,11 @@ const App: React.FunctionComponent = () => {
   const [isGameMode, setIsGameMode] = useState(false);
   const [mistakes, setMistakes] = useState(0);
   const [categories, setCategories] = useState([] as Category[]);
+  const [shouldUpdate, setShouldUpdate] = useState({});
 
   useEffect(() => {
     getCategories().then((data) => setCategories(data));
-  }, []);
+  }, [shouldUpdate]);
 
   return (
     <>
@@ -29,7 +30,10 @@ const App: React.FunctionComponent = () => {
         />
         <Switch>
           <Route path="/admin">
-            <AdminPanel categories={categories} />
+            <AdminPanel
+              categories={categories}
+              onUpdateCategories={() => setShouldUpdate({})}
+            />
           </Route>
           <Route path="/statistics" component={Statistics} />
           <Route path="/final-page">
