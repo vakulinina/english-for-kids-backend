@@ -2,13 +2,17 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useState } from 'react';
 import Menu from './menu';
+import Category from '../models/category';
 
 interface Props {
-  handleChange: () => void,
-  isGameMode: boolean,
+  handleChange: () => void;
+  isGameMode: boolean;
+  categories: Category[];
 }
 
-const Header: React.FunctionComponent<Props> = ({ handleChange, isGameMode }: Props) => {
+const Header: React.FunctionComponent<Props> = ({
+  handleChange, isGameMode, categories,
+}: Props) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -25,6 +29,7 @@ const Header: React.FunctionComponent<Props> = ({ handleChange, isGameMode }: Pr
             isMenuOpen={isMenuOpen}
             isGameMode={isGameMode}
             hideMenu={() => setIsMenuOpen(!isMenuOpen)}
+            categories={categories}
           />
           {isMenuOpen ? <div className="menu-background" onClick={() => setIsMenuOpen(!isMenuOpen)} /> : ''}
         </div>

@@ -1,16 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
-import data from '../data/cards.json';
 import GameCard from './game-card';
 import GameButton from './game-button';
 import { updateStatistics } from './statistics';
-
-interface Card {
-  word: string,
-  translation: string,
-  image: string,
-  category: string
-}
+import { getCardsByCategory } from '../api/api';
+import Card from '../models/card';
 
 interface UrlParams {
   category: string,
@@ -29,10 +23,16 @@ const GameField: React.FunctionComponent<Props> = ({
   const history = useHistory();
   const [isGameStarted, setIsGameStarted] = useState(false);
   const [currentAudio, setCurrentAudio] = useState(null as HTMLAudioElement | null);
+  const [cards, setCards] = useState([] as Card[]);
 
-  const cards: Card[] = category === 'difficult-words'
-    ? JSON.parse(localStorage.getItem('difficult-words') as string)
-    : data[category];
+  useEffect(() => {
+    if (category === 'difficult-words') {
+      setCards(JSON.parse(localStorage.getItem('difficult-words') as string));
+    } else {
+      getCardsByCategory(category).then((cardsByCategory) => setCards(cardsByCategory));
+    }
+  }, [category]);
+
   const words = cards.map(({ word }) => word).sort(() => Math.random() - 0.5);
   let currentWordIndex = 0;
   let mistakes = 0;

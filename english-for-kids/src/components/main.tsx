@@ -1,20 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import data from '../data/cards.json';
+import Category from '../models/category';
 
 interface Props {
-  isGameMode: boolean,
+  isGameMode: boolean;
+  categories: Category[];
 }
 
-const Main: React.FunctionComponent<Props> = ({ isGameMode }: Props) => {
+const Main: React.FunctionComponent<Props> = ({ isGameMode, categories }: Props) => {
   const gameModeClass = isGameMode ? 'main-card-game' : '';
 
   return (
     <main className="main-container">
-      {Object.keys(data).map((key) => (
-        <Link className={`main-card ${gameModeClass}`} to={`/${key}`} key={key}>
-          <img src={data[key][0].image} alt="action" />
-          {data[key][0].category}
+      {categories.map((category: Category) => (
+        <Link className={`main-card ${gameModeClass}`} to={`/${category.id}`} key={category.id}>
+          <img src="" alt={category.name} />
+          {category.name}
         </Link>
       ))}
     </main>

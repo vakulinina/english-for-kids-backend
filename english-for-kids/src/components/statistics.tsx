@@ -1,20 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import StatisticsButtons from './statistics-buttons';
 import cards from '../data/cards.json';
-
-interface Word {
-  word: string,
-  translation: string,
-  image: string,
-  category: string
-}
-
-interface StatsItem extends Word {
-  clicks: number,
-  correct: number,
-  wrong: number,
-  percent: number,
-}
+import Word from '../models/word';
+import StatsItem from '../models/statistics-item';
 
 const setLocalStorage = (): void => {
   const words: Word[] = Object.keys(cards).flatMap((key: string) => cards[key]);
