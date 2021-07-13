@@ -8,6 +8,7 @@ import Statistics from './statistics';
 import Footer from './footer';
 import { getCategories } from '../api/api';
 import Category from '../models/category';
+import AdminPanel from './admin-panel';
 
 const App: React.FunctionComponent = () => {
   const [isGameMode, setIsGameMode] = useState(false);
@@ -27,6 +28,9 @@ const App: React.FunctionComponent = () => {
           categories={categories}
         />
         <Switch>
+          <Route path="/admin">
+            <AdminPanel categories={categories} />
+          </Route>
           <Route path="/statistics" component={Statistics} />
           <Route path="/final-page">
             <FinalPage mistakes={mistakes} />
