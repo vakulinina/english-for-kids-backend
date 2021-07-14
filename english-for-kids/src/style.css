@@ -102,6 +102,76 @@ ul {
   height: 100%;
 }
 
+.login-button {
+  height: 60px;
+  margin-top: auto;
+  color: #fff;
+  border: 2px solid #fff;
+  font-size: 22px;
+  border-radius: 5px;
+  background: none;
+  cursor: pointer;
+}
+
+.login-modal {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.726);
+}
+
+.login-form {
+  padding: 2% 4%;
+  background-color: #fff;
+}
+
+.login-form-title {
+  margin: 0 0 30px;
+  text-align: center;
+}
+
+.login-form-label {
+  display: block;
+}
+
+.login-form-input {
+  width: 100%;
+  font-size: 22px;
+  margin-bottom: 10px;
+  border: none;
+  border-bottom: 1px solid #000;
+}
+
+.login-error {
+  max-width: 250px;
+  font-size: 15px;
+  margin: 0;
+  color: #e53935;
+}
+
+.login-form-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 30px;
+}
+
+.login-form-button {
+  height: 30px;
+  padding: 0 15px;
+  color: #04ad78;
+  border: 2px solid #00bf82;
+  border-radius: 4px;
+  background: none;
+  font-size: 18px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
 .header-container {
   display: flex;
   justify-content: space-between;
@@ -668,6 +738,10 @@ th:hover {
 
   th, td {
     font-size: 16px;
+  }
+
+  .login-modal {
+    left: 40px;
   }
 }
 
