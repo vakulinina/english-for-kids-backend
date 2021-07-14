@@ -9,6 +9,8 @@ import Footer from './footer';
 import { getCategories } from '../api/api';
 import Category from '../models/category';
 import AdminPanel from './admin-panel';
+import AdminHeader from './admin-header';
+import AdminWords from './admin-words';
 
 const App: React.FunctionComponent = () => {
   const [isGameMode, setIsGameMode] = useState(false);
@@ -23,30 +25,43 @@ const App: React.FunctionComponent = () => {
   return (
     <>
       <Router>
-        <Header
-          handleChange={() => setIsGameMode(!isGameMode)}
-          isGameMode={isGameMode}
-          categories={categories}
-        />
         <Switch>
           <Route path="/admin">
-            <AdminPanel
+            <AdminHeader />
+            <Switch>
+              <Route path="/admin/words">
+                <AdminWords />
+              </Route>
+              <Route path="/admin">
+                <AdminPanel
+                  categories={categories}
+                  onUpdateCategories={() => setShouldUpdate({})}
+                />
+              </Route>
+            </Switch>
+            <Footer />
+          </Route>
+          <Route>
+            <Header
+              handleChange={() => setIsGameMode(!isGameMode)}
+              isGameMode={isGameMode}
               categories={categories}
-              onUpdateCategories={() => setShouldUpdate({})}
             />
-          </Route>
-          <Route path="/statistics" component={Statistics} />
-          <Route path="/final-page">
-            <FinalPage mistakes={mistakes} />
-          </Route>
-          <Route path="/:category">
-            <GameField isGameMode={isGameMode} countMistakes={setMistakes} />
-          </Route>
-          <Route path="/">
-            <Main isGameMode={isGameMode} categories={categories} />
+            <Switch>
+              <Route path="/statistics" component={Statistics} />
+              <Route path="/final-page">
+                <FinalPage mistakes={mistakes} />
+              </Route>
+              <Route path="/:category">
+                <GameField isGameMode={isGameMode} countMistakes={setMistakes} />
+              </Route>
+              <Route path="/">
+                <Main isGameMode={isGameMode} categories={categories} />
+              </Route>
+            </Switch>
+            <Footer />
           </Route>
         </Switch>
-        <Footer />
       </Router>
     </>
   );
