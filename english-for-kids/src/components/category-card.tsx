@@ -4,11 +4,12 @@ import { deleteCategory } from '../api/api';
 interface Props {
   title: string;
   categoryId: string;
+  words: number;
   onUpdateCategories: () => void;
 }
 
 const CategoryCard: React.FunctionComponent<Props> = ({
-  title, categoryId, onUpdateCategories,
+  title, categoryId, onUpdateCategories, words,
 }: Props) => {
   const [isEditMode, setIsEditMode] = useState(false);
 
@@ -29,7 +30,7 @@ const CategoryCard: React.FunctionComponent<Props> = ({
         : (
           <>
             <p className="admin-category-card-title">{title}</p>
-            <p>WORDS: 0</p>
+            <p>{`WORDS: ${words}`}</p>
           </>
         )}
       <div className="admin-category-card-buttons">

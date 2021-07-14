@@ -16,6 +16,7 @@ const AdminPanel: React.FunctionComponent<Props> = ({ categories, onUpdateCatego
           key={category.id}
           categoryId={category.id}
           onUpdateCategories={onUpdateCategories}
+          words={category.words}
         />
       ))}
     </ul>

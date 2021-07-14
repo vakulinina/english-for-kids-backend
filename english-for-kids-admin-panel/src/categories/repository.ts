@@ -5,6 +5,8 @@ import Card from './card';
 const categories: Category[] = Object.keys(cards).map((key) => ({
   id: key,
   name: cards[key][0].category,
+  image: cards[key][0].image,
+  words: cards[key].length,
 }));
 
 const getCategories = (): Promise<Category[]> => Promise.resolve(categories);
