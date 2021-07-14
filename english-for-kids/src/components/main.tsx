@@ -14,7 +14,7 @@ const Main: React.FunctionComponent<Props> = ({ isGameMode, categories }: Props)
     <main className="main-container">
       {categories.map((category: Category) => (
         <Link className={`main-card ${gameModeClass}`} to={`/${category.id}`} key={category.id}>
-          <img src={category.image} alt={category.name} />
+          <img src={`http://127.0.0.1:3000/public/${category.image}`} alt={category.name} />
           {category.name}
         </Link>
       ))}

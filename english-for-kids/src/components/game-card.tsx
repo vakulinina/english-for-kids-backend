@@ -17,7 +17,7 @@ const GameCard: React.FunctionComponent<Props> = ({
 }: Props) => {
   const [isFlipped, setIsFlipped] = useState(false);
 
-  const sound = new Audio(`sounds/${word}.mp3`);
+  const sound = new Audio(`http://127.0.0.1:3000/public/sounds/${word}.mp3`);
   const handleCardClick = () => {
     if (!isFlipped && !isGameMode) {
       updateStatistics(`${word}`, 'clicks');
@@ -38,7 +38,7 @@ const GameCard: React.FunctionComponent<Props> = ({
       <div className={`content ${flippedClass}`}>
         <div className="front">
           <div className={`image-container ${gameModeImageClass}`}>
-            <img className="card-image" src={image} alt="" />
+            <img className="card-image" src={`http://127.0.0.1:3000/public/${image}`} alt="" />
           </div>
           <p className="word">{word}</p>
           <button
