@@ -1,8 +1,14 @@
 {
   "name": "english-for-kids-admin-panel",
   "scripts": {
-    "start": "ts-node ./src/app.ts",
-    "watch": "nodemon"
+    "start": "node dist/index.js",
+    "watch-node": "nodemon dist/index.js",
+    "watch-ts": "tsc -w",
+    "watch": "nodemon",
+    "deploy": "git add . && git commit -m Heroku && git push heroku main"
+  },
+  "engines": {
+    "node": "14.1.0"
   },
   "keywords": [],
   "author": "",
