@@ -23,6 +23,8 @@ const getCardsByCategory = async (id: string): Promise<Card[]> => {
   return cards;
 };
 
+const deleteWord = (word: string) => { };
+
 const login = async (user: { username: string, password: string }): Promise<void> => {
   const url = `${API_URL}/login`;
   const response = await fetch(url, {
@@ -39,5 +41,5 @@ const login = async (user: { username: string, password: string }): Promise<void
 };
 
 export {
-  getCategories, getCardsByCategory, deleteCategory, login,
+  getCategories, getCardsByCategory, deleteCategory, login, deleteWord,
 };

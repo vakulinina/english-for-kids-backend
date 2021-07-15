@@ -1,7 +1,38 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import WordCard from './admin-word-card';
+import { getCardsByCategory } from '../api/api';
+import Card from '../models/card';
 
-const AdminWords: React.FunctionComponent = () => (
-  <main>Cards</main>
-);
+interface UrlParams {
+  category: string,
+}
+
+const AdminWords: React.FunctionComponent = () => {
+  const { category } = useParams() as UrlParams;
+  const [words, setWords] = useState([] as Card[]);
+  const [shouldUpdate, setShouldUpdate] = useState({});
+
+  useEffect(() => {
+    getCardsByCategory(category).then((data) => setWords(data));
+  }, [shouldUpdate]);
+
+  return (
+    <main>
+      <ul className="admin-categories">
+        {words.map((word) => (
+          <WordCard
+            word={word.word}
+            key={word.word}
+            translation={word.translation}
+            sound={`${word.word}.mp3`}
+            image={word.image}
+            onUpdateWords={() => setShouldUpdate({})}
+          />
+        ))}
+      </ul>
+    </main>
+  );
+};
 
 export default AdminWords;

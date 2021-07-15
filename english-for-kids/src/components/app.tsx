@@ -29,7 +29,7 @@ const App: React.FunctionComponent = () => {
           <Route path="/admin">
             <AdminHeader />
             <Switch>
-              <Route path="/admin/words">
+              <Route path="/admin/:category/words">
                 <AdminWords />
               </Route>
               <Route path="/admin">

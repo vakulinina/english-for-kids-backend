@@ -701,6 +701,44 @@ th:hover {
   transform: translateY(-3px) rotate(-45deg);
 }
 
+.admin-word-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  height: 340px;
+  padding: 5% 6% 3%;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+  overflow: hidden;
+}
+
+.admin-word-card p {
+  margin-top: 0;
+}
+
+.admin-word-card-img {
+  width: 100%;
+}
+
+.admin-word-card-input-label {
+  align-self: flex-start;
+  text-align: start;
+  margin-top: 10px;
+  color: rgb(59, 59, 59);
+  font-size: 13px;
+}
+
+.admin-word-card-input {
+  margin-top: 0;
+  font-size: 20px;
+  border: none;
+  border-bottom: 1px solid black;
+}
+
+.file-input {
+  margin-top: 10px;
+}
 
 @media screen and (max-width: 1150px) {
   .main-container {

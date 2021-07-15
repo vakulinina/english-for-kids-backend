@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import { deleteCategory } from '../api/api';
 
 interface Props {
@@ -44,7 +45,7 @@ const CategoryCard: React.FunctionComponent<Props> = ({
           : (
             <>
               <button className="card-button" onClick={() => setIsEditMode(true)} type="button">Update</button>
-              <button className="card-button" type="button">Add word</button>
+              <NavLink to={`/admin/${categoryId}/words`}><button className="card-button" type="button">Add word</button></NavLink>
             </>
           )}
       </div>
