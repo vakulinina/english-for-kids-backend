@@ -23,7 +23,10 @@ const getCardsByCategory = async (id: string): Promise<Card[]> => {
   return cards;
 };
 
-const deleteWord = (word: string) => { };
+const deleteWord = async (word: string): Promise<void> => {
+  const url = `${API_URL}/words/${word}`;
+  await fetch(url, { method: 'DELETE' });
+};
 
 const login = async (user: { username: string, password: string }): Promise<void> => {
   const url = `${API_URL}/login`;

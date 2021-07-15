@@ -33,9 +33,22 @@ const createCategory = (data: Category): Promise<Category> => {
   return Promise.resolve(newCategory);
 };
 
-const getCardsByCategory = (id: string): Promise<Card[]> => Promise
-  .resolve(cards[id]);
+const updateCategory = (categoryId: string, newName: string): Promise<void> => {
+  if (!cards[categoryId]) return Promise.reject(new Error('Category not found'));
+  cards[categoryId].forEach((card) => {
+    const currentCard = card;
+    currentCard.category = newName;
+  });
+  return Promise.resolve();
+};
+
+const getCardsByCategory = (id: string): Promise<Card[]> => Promise.resolve(cards[id]);
 
 export {
-  getCategories, getCategoryById, deleteCategory, createCategory, getCardsByCategory,
+  getCategories,
+  getCategoryById,
+  deleteCategory,
+  createCategory,
+  getCardsByCategory,
+  updateCategory,
 };

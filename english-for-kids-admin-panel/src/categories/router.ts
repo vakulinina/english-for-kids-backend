@@ -1,6 +1,11 @@
 import { Router } from 'express';
 import {
-  getCategoryById, getCategories, deleteCategory, createCategory, getCardsByCategory,
+  getCategoryById,
+  getCategories,
+  deleteCategory,
+  createCategory,
+  getCardsByCategory,
+  updateCategory,
 } from './repository';
 import Category from './category';
 
@@ -45,6 +50,17 @@ router.get('/:id/words', async (req, res) => {
   const categoryId = req.params.id;
   const words = await getCardsByCategory(categoryId);
   return res.json(words);
+});
+
+router.patch('/:id', async (req, res) => {
+  const categoryId = req.params.id;
+  const { name } = req.body;
+  try {
+    await updateCategory(categoryId, name);
+    return res.sendStatus(200);
+  } catch (error) {
+    return res.status(404).send({ error: error.message });
+  }
 });
 
 export default router;

@@ -3,6 +3,7 @@ import cors from 'cors';
 import bodyparser from 'body-parser';
 import path from 'path';
 import categories from './categories/router';
+import words from './words/router';
 import users from './users/router';
 
 const app = express();
@@ -16,6 +17,7 @@ const PORT = process.env.PORT || 3000;
 app.use('/', express.static(publicPath));
 app.use('/public', express.static(publicMediaPath));
 app.use('/api/categories', categories);
+app.use('/api/words', words);
 app.use('/api/login', users);
 
 app.listen(PORT, () => console.log(`server started on port ${PORT}`));
