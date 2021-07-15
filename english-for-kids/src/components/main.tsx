@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Category from '../models/category';
+import BASE_URL from '../data/url';
 
 interface Props {
   isGameMode: boolean;
@@ -14,7 +15,7 @@ const Main: React.FunctionComponent<Props> = ({ isGameMode, categories }: Props)
     <main className="main-container">
       {categories.map((category: Category) => (
         <Link className={`main-card ${gameModeClass}`} to={`/${category.id}`} key={category.id}>
-          <img src={`http://127.0.0.1:3000/public/${category.image}`} alt={category.name} />
+          <img src={`${BASE_URL}/public/${category.image}`} alt={category.name} />
           {category.name}
         </Link>
       ))}

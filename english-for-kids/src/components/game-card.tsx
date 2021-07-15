@@ -4,6 +4,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState } from 'react';
 import { updateStatistics } from './statistics';
+import BASE_URL from '../data/url';
 
 interface Props {
   image: string,
@@ -17,7 +18,7 @@ const GameCard: React.FunctionComponent<Props> = ({
 }: Props) => {
   const [isFlipped, setIsFlipped] = useState(false);
 
-  const sound = new Audio(`http://127.0.0.1:3000/public/sounds/${word}.mp3`);
+  const sound = new Audio(`${BASE_URL}/public/sounds/${word}.mp3`);
   const handleCardClick = () => {
     if (!isFlipped && !isGameMode) {
       updateStatistics(`${word}`, 'clicks');
@@ -38,7 +39,7 @@ const GameCard: React.FunctionComponent<Props> = ({
       <div className={`content ${flippedClass}`}>
         <div className="front">
           <div className={`image-container ${gameModeImageClass}`}>
-            <img className="card-image" src={`http://127.0.0.1:3000/public/${image}`} alt="" />
+            <img className="card-image" src={`${BASE_URL}/public/${image}`} alt="" />
           </div>
           <p className="word">{word}</p>
           <button

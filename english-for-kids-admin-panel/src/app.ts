@@ -9,10 +9,13 @@ const app = express();
 app.use(cors());
 app.use(bodyparser.json());
 
-const publicPath = path.resolve(__dirname, '../public');
+const publicPath = path.resolve(__dirname, '../frontend');
+const publicMediaPath = path.resolve(__dirname, '../public');
+const PORT = process.env.PORT || 3000;
 
-app.use('/public', express.static(publicPath));
+app.use('/', express.static(publicPath));
+app.use('/public', express.static(publicMediaPath));
 app.use('/api/categories', categories);
 app.use('/api/login', users);
 
-app.listen(3000, () => console.log('server started'));
+app.listen(PORT, () => console.log(`server started on port ${PORT}`));
