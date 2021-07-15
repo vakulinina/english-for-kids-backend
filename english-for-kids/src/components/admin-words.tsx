@@ -19,6 +19,7 @@ const AdminWords: React.FunctionComponent = () => {
 
   return (
     <main>
+      <h2 className="admin-words-title">{`Category: ${words.length > 0 ? words[0].category : ''}`}</h2>
       <ul className="admin-categories">
         {words.map((word) => (
           <WordCard

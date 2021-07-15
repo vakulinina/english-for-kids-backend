@@ -34,11 +34,14 @@ const createCategory = (data: Category): Promise<Category> => {
 };
 
 const updateCategory = (categoryId: string, newName: string): Promise<void> => {
-  if (!cards[categoryId]) return Promise.reject(new Error('Category not found'));
-  cards[categoryId].forEach((card) => {
-    const currentCard = card;
-    currentCard.category = newName;
-  });
+  const category = categories.find((currentCategory) => currentCategory.id === categoryId);
+  if (!category) return Promise.reject(new Error('Category not found'));
+  category.name = newName;
+  // if (!cards[categoryId]) return Promise.reject(new Error('Category not found'));
+  // cards[categoryId].forEach((card) => {
+  //   const currentCard = card;
+  //   currentCard.category = newName;
+  // });
   return Promise.resolve();
 };
 

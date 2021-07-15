@@ -3,7 +3,7 @@
 }
 
 body {
-  margin: 0 50px;
+  margin: 0;
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -179,6 +179,7 @@ ul {
   height: 45px;
   min-width: 300px;
   margin: 40px auto;
+  padding: 0 50px;
 }
 
 .menu-toggle span,
@@ -546,10 +547,11 @@ th:hover {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  max-width: 1000px;
-  width: 100%;
-  margin: 0 50px;
+  width: 100vw;
+  margin: 0;
   height: 50px;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.349);
+  background-color: #fff;
 }
 
 .contacts {
@@ -570,7 +572,7 @@ th:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+  width: 100vw;
   height: 60px;
   min-width: 300px;
   margin: 0 auto 40px;
@@ -699,6 +701,10 @@ th:hover {
 
 .delete-button::after {
   transform: translateY(-3px) rotate(-45deg);
+}
+
+.admin-words-title {
+  margin: 0 40px 30px;
 }
 
 .admin-word-card {

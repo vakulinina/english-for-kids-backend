@@ -23,6 +23,21 @@ const getCardsByCategory = async (id: string): Promise<Card[]> => {
   return cards;
 };
 
+const updateCategory = async (category: string, body: { name: string }): Promise<void> => {
+  const url = `${API_URL}/categories/${category}`;
+  const response = await fetch(url, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(body),
+  });
+  if (response.status !== 200) {
+    return Promise.reject(await response.json());
+  }
+  return Promise.resolve();
+};
+
 const deleteWord = async (word: string): Promise<void> => {
   const url = `${API_URL}/words/${word}`;
   await fetch(url, { method: 'DELETE' });
@@ -44,5 +59,5 @@ const login = async (user: { username: string, password: string }): Promise<void
 };
 
 export {
-  getCategories, getCardsByCategory, deleteCategory, login, deleteWord,
+  getCategories, getCardsByCategory, deleteCategory, updateCategory, deleteWord, login,
 };

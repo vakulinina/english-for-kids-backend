@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { deleteCategory } from '../api/api';
+import { deleteCategory, updateCategory } from '../api/api';
 
 interface Props {
   title: string;
@@ -13,19 +13,26 @@ const CategoryCard: React.FunctionComponent<Props> = ({
   title, categoryId, onUpdateCategories, words,
 }: Props) => {
   const [isEditMode, setIsEditMode] = useState(false);
+  const [categoryName, setCategoryName] = useState('');
 
   const handleDeleteClick = async () => {
     await deleteCategory(categoryId);
     onUpdateCategories();
   };
 
+  const handleSaveCLick = async () => {
+    await updateCategory(categoryId, { name: categoryName });
+    setIsEditMode(false);
+    onUpdateCategories();
+  };
+
   return (
-    <li className="admin-category-card">
+    <form className="admin-category-card">
       {isEditMode
         ? (
           <label className="admin-category-card-input-label" htmlFor="category-input">
             Category Name:
-            <input className="admin-category-card-input" defaultValue={title} id="category-input" />
+            <input className="admin-category-card-input" defaultValue={title} onChange={(e) => setCategoryName(e.target.value)} id="category-input" />
           </label>
         )
         : (
@@ -38,7 +45,7 @@ const CategoryCard: React.FunctionComponent<Props> = ({
         {isEditMode
           ? (
             <>
-              <button className="card-button button-edit-mode" onClick={() => setIsEditMode(false)} type="button">Save</button>
+              <button className="card-button button-edit-mode" onClick={handleSaveCLick} type="button">Save</button>
               <button className="card-button button-edit-mode cancel-button" onClick={() => setIsEditMode(false)} type="button">Cancel</button>
             </>
           )
@@ -50,7 +57,7 @@ const CategoryCard: React.FunctionComponent<Props> = ({
           )}
       </div>
       <button className="delete-button" onClick={handleDeleteClick} type="button">Delete</button>
-    </li>
+    </form>
   );
 };
 
