@@ -53,6 +53,23 @@ const createCategory = async (category: { name: string }): Promise<void> => {
   return Promise.resolve();
 };
 
+const createWord = async (word: {
+  word: string, translation: string, categoryId: string
+}): Promise<void> => {
+  const url = `${API_URL}/words`;
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(word),
+  });
+  if (response.status !== 200) {
+    return Promise.reject(await response.json());
+  }
+  return Promise.resolve();
+};
+
 const deleteWord = async (word: string): Promise<void> => {
   const url = `${API_URL}/words/${word}`;
   await fetch(url, { method: 'DELETE' });
@@ -79,6 +96,7 @@ export {
   deleteCategory,
   updateCategory,
   createCategory,
+  createWord,
   deleteWord,
   login,
 };

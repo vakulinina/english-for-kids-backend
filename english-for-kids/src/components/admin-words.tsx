@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import WordCard from './admin-word-card';
 import { getCardsByCategory } from '../api/api';
 import Card from '../models/card';
+import CreateWordCard from './create-word-card';
 
 interface UrlParams {
   category: string,
@@ -33,6 +34,7 @@ const AdminWords: React.FunctionComponent = () => {
             onUpdateWords={() => setShouldUpdate({})}
           />
         ))}
+        <CreateWordCard categoryId={category} onUpdateWords={() => setShouldUpdate({})} />
       </ul>
     </main>
   );

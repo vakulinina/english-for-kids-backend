@@ -1,7 +1,13 @@
 import { Router } from 'express';
-import deleteCard from './repository';
+import { deleteCard, createCard } from './repository';
 
 const router = Router();
+
+router.post('/', async (req, res) => {
+  const data = req.body;
+  await createCard(data);
+  return res.sendStatus(200);
+});
 
 router.delete('/:word', async (req, res) => {
   const { word } = req.params;
