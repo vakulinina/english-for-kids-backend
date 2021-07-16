@@ -568,6 +568,10 @@ th:hover {
   height: 100%;
 }
 
+.year-created {
+  margin-right: 50px;
+}
+
 .admin-header {
   display: flex;
   justify-content: space-between;
@@ -618,6 +622,7 @@ th:hover {
   position: relative;
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: 250px;
   height: 236px;
   padding: 3%;
@@ -649,6 +654,7 @@ th:hover {
 .admin-category-card-buttons {
   display: flex;
   justify-content: space-evenly;
+  width: 100%;
   margin: auto 0 20px;
 }
 
@@ -703,6 +709,21 @@ th:hover {
   transform: translateY(-3px) rotate(-45deg);
 }
 
+.create-category-button {
+  width: 80px;
+  height: 80px;
+  margin-top: 20px;
+  padding: 0;
+  font-size: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.create-category-button img {
+  width: 100%;
+}
+
 .admin-words-title {
   margin: 0 40px 30px;
 }
@@ -747,12 +768,9 @@ th:hover {
 }
 
 @media screen and (max-width: 1150px) {
-  .main-container {
-    grid-template-columns: repeat(2,1fr);
-    grid-template-rows: repeat(4,auto);
-  }
-
-  .cards {
+  .main-container,
+  .cards,
+  .admin-categories {
     grid-template-columns: repeat(2,1fr);
     grid-template-rows: repeat(4,auto);
   }
@@ -761,6 +779,13 @@ th:hover {
 @media screen and (max-width: 610px) {
   body {
     margin: 0 20px;
+  }
+
+  .main-container,
+  .cards,
+  .admin-categories {
+    grid-template-columns: repeat(1,1fr);
+    grid-template-rows: repeat(8,auto);
   }
 
   .main-card {
@@ -774,10 +799,8 @@ th:hover {
   }
 
   .card {
-    position: relative;
     width: 200px;
     height: 200px;
-    perspective: 700px;
   }
 
   th, td {
@@ -792,16 +815,5 @@ th:hover {
 @media screen and (max-width: 460px) {
   body {
     margin: 0 10px;
-  }
-
-  .main-card {
-    width: 140px;
-  }
-
-  .card {
-    position: relative;
-    width: 150px;
-    height: 150px;
-    perspective: 700px;
   }
 }

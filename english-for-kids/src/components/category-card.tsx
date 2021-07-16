@@ -27,7 +27,7 @@ const CategoryCard: React.FunctionComponent<Props> = ({
   };
 
   return (
-    <form className="admin-category-card">
+    <li className="admin-category-card">
       {isEditMode
         ? (
           <label className="admin-category-card-input-label" htmlFor="category-input">
@@ -57,7 +57,7 @@ const CategoryCard: React.FunctionComponent<Props> = ({
           )}
       </div>
       <button className="delete-button" onClick={handleDeleteClick} type="button">Delete</button>
-    </form>
+    </li>
   );
 };
 

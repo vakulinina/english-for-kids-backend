@@ -13,10 +13,10 @@ const Main: React.FunctionComponent<Props> = ({ isGameMode, categories }: Props)
 
   return (
     <main className="main-container">
-      {categories.map((category: Category) => (
-        <Link className={`main-card ${gameModeClass}`} to={`/${category.id}`} key={category.id}>
-          <img src={`${BASE_URL}/public/${category.image}`} alt={category.name} />
-          {category.name}
+      {categories.map(({ id, image, name }: Category) => (
+        <Link className={`main-card ${gameModeClass}`} to={`/${id}`} key={id}>
+          <img src={image ? `${BASE_URL}/public/${image}` : './icons/no_image_backdrop.jpeg'} alt={name} />
+          {name}
         </Link>
       ))}
     </main>

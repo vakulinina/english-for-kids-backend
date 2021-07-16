@@ -37,7 +37,7 @@ router.delete('/:id', async (req, res) => {
 
 router.post('/', async (req, res) => {
   const data = req.body as Category;
-  if (!data.id || !data.name) return res.sendStatus(400);
+  if (!data.name) return res.sendStatus(400);
   try {
     const newCategory = await createCategory(data);
     return res.json(newCategory);

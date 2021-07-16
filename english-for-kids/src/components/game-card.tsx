@@ -28,6 +28,8 @@ const GameCard: React.FunctionComponent<Props> = ({
 
   const flippedClass = isFlipped ? 'flipped' : '';
   const gameModeImageClass = isGameMode ? 'image-container-game' : '';
+  const imageUrl = `${BASE_URL}/public/${image}`;
+  const noImageSrc = './icons/no_image_backdrop.jpeg';
 
   return (
     <li
@@ -39,7 +41,7 @@ const GameCard: React.FunctionComponent<Props> = ({
       <div className={`content ${flippedClass}`}>
         <div className="front">
           <div className={`image-container ${gameModeImageClass}`}>
-            <img className="card-image" src={`${BASE_URL}/public/${image}`} alt="" />
+            <img className="card-image" src={image ? imageUrl : noImageSrc} alt="" />
           </div>
           <p className="word">{word}</p>
           <button
@@ -52,7 +54,7 @@ const GameCard: React.FunctionComponent<Props> = ({
         </div>
         <div className="back">
           <div className="image-container">
-            <img className="card-image" src={image} alt="" />
+            <img className="card-image" src={image ? imageUrl : noImageSrc} alt="" />
           </div>
           <p className="word">{translation}</p>
         </div>

@@ -28,7 +28,13 @@ const createCategory = (data: Category): Promise<Category> => {
   if (isExists) {
     return Promise.reject(new Error('Category already exists'));
   }
-  const newCategory = data;
+  const categoryId = data.name.toLowerCase().split(' ').join('-');
+  const newCategory = {
+    id: categoryId,
+    name: data.name,
+    words: 0,
+  };
+  cards[categoryId] = [];
   categories.push(newCategory);
   return Promise.resolve(newCategory);
 };
@@ -37,11 +43,6 @@ const updateCategory = (categoryId: string, newName: string): Promise<void> => {
   const category = categories.find((currentCategory) => currentCategory.id === categoryId);
   if (!category) return Promise.reject(new Error('Category not found'));
   category.name = newName;
-  // if (!cards[categoryId]) return Promise.reject(new Error('Category not found'));
-  // cards[categoryId].forEach((card) => {
-  //   const currentCard = card;
-  //   currentCard.category = newName;
-  // });
   return Promise.resolve();
 };
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import Category from '../models/category';
 import CategoryCard from './category-card';
+import CreateCategoryCard from './create-category-card';
 
 interface Props {
   categories: Category[];
@@ -19,6 +20,7 @@ const AdminPanel: React.FunctionComponent<Props> = ({ categories, onUpdateCatego
           words={category.words}
         />
       ))}
+      <CreateCategoryCard onUpdateCategories={onUpdateCategories} />
     </ul>
   </main>
 );
