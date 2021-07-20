@@ -22,7 +22,9 @@ ul {
   grid-gap: 15px;
   justify-items: center;
   max-width: 1440px;
-  margin: 0 auto 125px;
+  height: calc(100vh - 175px);
+  margin: 0 auto;
+  overflow: auto;
 }
 
 .main-card {
@@ -86,6 +88,13 @@ ul {
 
 .menu-game-mode {
   background: linear-gradient(40deg,#ffd86f,#fc6262);
+}
+
+.menu-nav-links {
+  display: flex;
+  flex-direction: column;
+  max-height: 60vh;
+  overflow: auto;
 }
 
 .menu-active {
@@ -304,8 +313,9 @@ ul {
 }
 
 .game-field {
-  margin-bottom: 100px;
   text-align: center;
+  height: calc(100vh - 175px);
+  overflow: auto;
 }
 
 .cards {
@@ -315,8 +325,10 @@ ul {
   grid-gap: 15px;
   justify-items: center;
   max-width: 1440px;
-  margin: 0 auto 40px;
+  height: calc(100vh - 175px - 100px);
+  margin: 0 auto;
   padding: 0;
+  overflow: auto;
 }
 
 .card {
@@ -411,7 +423,7 @@ ul {
   background: linear-gradient(40deg,#ffd86f,#fc6262);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.219);
   font-size: 20px;
-  border:none;
+  border: none;
   border-radius: 50%;
   text-transform: uppercase;
   cursor: pointer;

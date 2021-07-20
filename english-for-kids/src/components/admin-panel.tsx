@@ -16,7 +16,6 @@ const AdminPanel: React.FunctionComponent<Props> = (
   { categories, onUpdateCategories, shouldUpdate }: Props,
 ) => {
   const [pageNumber, setPageNumber] = useState(2);
-  // const [shouldUpdate, setShouldUpdate] = useState({});
 
   const {
     loadedCategories,

@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, {
+  useState, useEffect, useRef, useCallback,
+} from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import GameCard from './game-card';
 import GameButton from './game-button';
 import { updateStatistics } from './statistics';
 import { getCardsByCategory } from '../api/api';
 import Card from '../models/card';
+import { useLoadMoreWords } from '../common/custom-hooks';
 
 interface UrlParams {
   category: string,
@@ -15,14 +18,12 @@ interface Props {
   countMistakes: (mistakes: number) => void,
 }
 
-const GameField: React.FunctionComponent<Props> = ({
-  isGameMode,
-  countMistakes,
-}: Props) => {
+const GameField: React.FunctionComponent<Props> = ({ isGameMode, countMistakes }: Props) => {
   const { category } = useParams() as UrlParams;
   const history = useHistory();
   const [isGameStarted, setIsGameStarted] = useState(false);
   const [currentAudio, setCurrentAudio] = useState(null as HTMLAudioElement | null);
+  const [pageNumber, setPageNumber] = useState(2);
   const [cards, setCards] = useState([] as Card[]);
 
   useEffect(() => {
@@ -32,6 +33,24 @@ const GameField: React.FunctionComponent<Props> = ({
       getCardsByCategory(category, 1).then((cardsByCategory) => setCards(cardsByCategory));
     }
   }, [category]);
+
+  const {
+    loadedWords,
+    hasMore,
+    loading,
+  } = useLoadMoreWords(category, pageNumber);
+
+  const observer = useRef() as React.MutableRefObject<IntersectionObserver>;
+  const lastWordElementRef = useCallback((node: HTMLLIElement) => {
+    if (loading) return;
+    if (observer.current) observer.current.disconnect();
+    observer.current = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting && hasMore) {
+        setPageNumber((prevPageNumber) => prevPageNumber + 1);
+      }
+    });
+    if (node) observer.current.observe(node);
+  }, [loading, hasMore]);
 
   const words = cards.map(({ word }) => word).sort(() => Math.random() - 0.5);
   let currentWordIndex = 0;
@@ -90,8 +109,9 @@ const GameField: React.FunctionComponent<Props> = ({
   return (
     <main className="game-field">
       <ul className="cards">
-        {cards.map(({ image, word, translation }) => (
+        {[...cards, ...loadedWords].map(({ image, word, translation }, index, array) => (
           <GameCard
+            ref={array.length === index + 1 ? lastWordElementRef : null}
             image={image}
             word={word}
             translation={translation}

@@ -3,7 +3,7 @@ import { getCategories, getCardsByCategory } from '../api/api';
 import Category from '../models/category';
 import Card from '../models/card';
 
-const useLoadMoreCategories = (pageNumber: number, shouldUpdate: Record<string, unknown>): {
+const useLoadMoreCategories = (pageNumber: number, shouldUpdate?: Record<string, unknown>): {
   loading: boolean, loadedCategories: Category[], hasMore: boolean,
 } => {
   const [loading, setLoading] = useState(true);
@@ -30,7 +30,7 @@ const useLoadMoreCategories = (pageNumber: number, shouldUpdate: Record<string, 
 };
 
 const useLoadMoreWords = (
-  category: string, pageNumber: number, shouldUpdate: Record<string, unknown>,
+  category: string, pageNumber: number, shouldUpdate?: Record<string, unknown>,
 ): {
   loading: boolean, loadedWords: Card[], hasMore: boolean,
 } => {

@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable react/button-has-type */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useState } from 'react';
+import React, { useState, forwardRef } from 'react';
 import { updateStatistics } from './statistics';
 import BASE_URL from '../data/url';
 
@@ -13,9 +13,9 @@ interface Props {
   isGameMode: boolean
 }
 
-const GameCard: React.FunctionComponent<Props> = ({
+const GameCard = forwardRef(({
   image, word, translation, isGameMode,
-}: Props) => {
+}: Props, ref: React.ForwardedRef<HTMLLIElement>) => {
   const [isFlipped, setIsFlipped] = useState(false);
 
   const sound = new Audio(`${BASE_URL}/public/sounds/${word}.mp3`);
@@ -33,6 +33,7 @@ const GameCard: React.FunctionComponent<Props> = ({
 
   return (
     <li
+      ref={ref}
       className="card"
       onClick={handleCardClick}
       onMouseLeave={() => setIsFlipped(false)}
@@ -61,6 +62,6 @@ const GameCard: React.FunctionComponent<Props> = ({
       </div>
     </li>
   );
-};
+});
 
 export default GameCard;

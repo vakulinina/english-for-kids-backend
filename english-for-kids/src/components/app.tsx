@@ -54,7 +54,10 @@ const App: React.FunctionComponent = () => {
                 <FinalPage mistakes={mistakes} />
               </Route>
               <Route path="/:category">
-                <GameField isGameMode={isGameMode} countMistakes={setMistakes} />
+                <GameField
+                  isGameMode={isGameMode}
+                  countMistakes={setMistakes}
+                />
               </Route>
               <Route path="/">
                 <Main isGameMode={isGameMode} categories={categories} />
