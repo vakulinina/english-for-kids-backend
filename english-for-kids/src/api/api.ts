@@ -4,8 +4,8 @@ import BASE_URL from '../data/url';
 
 const API_URL = `${BASE_URL}/api`;
 
-const getCategories = async (): Promise<Category[]> => {
-  const url = `${API_URL}/categories`;
+const getCategories = async (pageNumber: number): Promise<Category[]> => {
+  const url = `${API_URL}/categories?page=${pageNumber}`;
   const response = await fetch(url, { mode: 'cors' });
   const categories = await response.json();
   return categories;
@@ -16,8 +16,8 @@ const deleteCategory = async (id: string): Promise<void> => {
   await fetch(url, { method: 'DELETE' });
 };
 
-const getCardsByCategory = async (id: string): Promise<Card[]> => {
-  const url = `${API_URL}/categories/${id}/words`;
+const getCardsByCategory = async (id: string, pageNumber: number): Promise<Card[]> => {
+  const url = `${API_URL}/categories/${id}/words?page=${pageNumber}`;
   const response = await fetch(url);
   const cards = await response.json();
   return cards;

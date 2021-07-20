@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, forwardRef } from 'react';
 import { deleteWord } from '../api/api';
 import BASE_URL from '../data/url';
 
@@ -10,9 +10,9 @@ interface Props {
   onUpdateWords: () => void;
 }
 
-const WordCard: React.FunctionComponent<Props> = ({
+const WordCard = forwardRef(({
   word, translation, sound, image, onUpdateWords,
-}: Props) => {
+}: Props, ref: React.ForwardedRef<HTMLLIElement>) => {
   const [isEditMode, setIsEditMode] = useState(false);
 
   const handleDeleteWordClick = async () => {
@@ -21,7 +21,7 @@ const WordCard: React.FunctionComponent<Props> = ({
   };
 
   return (
-    <li className="admin-word-card">
+    <li className="admin-word-card" ref={ref}>
       {isEditMode
         ? (
           <>
@@ -81,6 +81,6 @@ const WordCard: React.FunctionComponent<Props> = ({
       <button className="delete-button" onClick={handleDeleteWordClick} type="button">Delete</button>
     </li>
   );
-};
+});
 
 export default WordCard;

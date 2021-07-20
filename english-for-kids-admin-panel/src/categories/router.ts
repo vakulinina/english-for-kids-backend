@@ -12,7 +12,8 @@ import Category from './category';
 const router = Router();
 
 router.get('/', async (req, res) => {
-  const categories = await getCategories();
+  const page = Number(req.query.page);
+  const categories = await getCategories(page);
   res.json(categories);
 });
 
@@ -47,8 +48,9 @@ router.post('/', async (req, res) => {
 });
 
 router.get('/:id/words', async (req, res) => {
+  const page = Number(req.query.page);
   const categoryId = req.params.id;
-  const words = await getCardsByCategory(categoryId);
+  const words = await getCardsByCategory(categoryId, page);
   return res.json(words);
 });
 

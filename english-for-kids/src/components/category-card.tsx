@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, forwardRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import { deleteCategory, updateCategory } from '../api/api';
 
@@ -9,9 +9,9 @@ interface Props {
   onUpdateCategories: () => void;
 }
 
-const CategoryCard: React.FunctionComponent<Props> = ({
+const CategoryCard = forwardRef(({
   title, categoryId, onUpdateCategories, words,
-}: Props) => {
+}: Props, ref: React.ForwardedRef<HTMLLIElement>) => {
   const [isEditMode, setIsEditMode] = useState(false);
   const [categoryName, setCategoryName] = useState('');
 
@@ -27,7 +27,7 @@ const CategoryCard: React.FunctionComponent<Props> = ({
   };
 
   return (
-    <li className="admin-category-card">
+    <li className="admin-category-card" ref={ref}>
       {isEditMode
         ? (
           <label className="admin-category-card-input-label" htmlFor="category-input">
@@ -59,6 +59,6 @@ const CategoryCard: React.FunctionComponent<Props> = ({
       <button className="delete-button" onClick={handleDeleteClick} type="button">Delete</button>
     </li>
   );
-};
+});
 
 export default CategoryCard;

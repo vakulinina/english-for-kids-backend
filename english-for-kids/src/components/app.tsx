@@ -19,7 +19,7 @@ const App: React.FunctionComponent = () => {
   const [shouldUpdate, setShouldUpdate] = useState({});
 
   useEffect(() => {
-    getCategories().then((data) => setCategories(data));
+    getCategories(1).then((data) => setCategories(data));
   }, [shouldUpdate]);
 
   return (
@@ -36,6 +36,7 @@ const App: React.FunctionComponent = () => {
                 <AdminPanel
                   categories={categories}
                   onUpdateCategories={() => setShouldUpdate({})}
+                  shouldUpdate={shouldUpdate}
                 />
               </Route>
             </Switch>

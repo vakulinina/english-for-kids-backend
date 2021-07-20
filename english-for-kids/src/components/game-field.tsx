@@ -29,7 +29,7 @@ const GameField: React.FunctionComponent<Props> = ({
     if (category === 'difficult-words') {
       setCards(JSON.parse(localStorage.getItem('difficult-words') as string));
     } else {
-      getCardsByCategory(category).then((cardsByCategory) => setCards(cardsByCategory));
+      getCardsByCategory(category, 1).then((cardsByCategory) => setCards(cardsByCategory));
     }
   }, [category]);
 

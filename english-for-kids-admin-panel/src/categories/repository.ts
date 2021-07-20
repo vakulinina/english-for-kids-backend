@@ -2,6 +2,8 @@ import cards from './cards';
 import Category from './category';
 import Card from './card';
 
+const PAGE_SIZE = 8;
+
 const categories: Category[] = Object.keys(cards).map((key) => ({
   id: key,
   name: cards[key][0].category,
@@ -9,7 +11,11 @@ const categories: Category[] = Object.keys(cards).map((key) => ({
   words: cards[key].length,
 }));
 
-const getCategories = (): Promise<Category[]> => Promise.resolve(categories);
+const getCategories = (page: number): Promise<Category[]> => {
+  const startIndex = PAGE_SIZE * (page - 1);
+  const categoriesByPage = categories.slice(startIndex, startIndex + PAGE_SIZE);
+  return Promise.resolve(categoriesByPage);
+};
 
 const getCategoryById = (id: string): Promise<Category | undefined> => {
   const category = categories.find((cat) => cat.id === id);
@@ -46,7 +52,11 @@ const updateCategory = (categoryId: string, newName: string): Promise<void> => {
   return Promise.resolve();
 };
 
-const getCardsByCategory = (id: string): Promise<Card[]> => Promise.resolve(cards[id]);
+const getCardsByCategory = (id: string, page: number): Promise<Card[]> => {
+  const startIndex = PAGE_SIZE * (page - 1);
+  const wordsByPage = cards[id].slice(startIndex, startIndex + PAGE_SIZE);
+  return Promise.resolve(wordsByPage);
+};
 
 export {
   getCategories,

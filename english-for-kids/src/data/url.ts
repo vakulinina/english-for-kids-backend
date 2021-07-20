@@ -1,3 +1,3 @@
-const BASE_URL = 'https://calm-ridge-98788.herokuapp.com';
+const BASE_URL = 'http://127.0.0.1:3000';
 
 export default BASE_URL;
