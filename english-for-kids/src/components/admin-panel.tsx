@@ -10,7 +10,7 @@ interface Props {
 
 const AdminPanel: React.FunctionComponent<Props> = ({ categories, onUpdateCategories }: Props) => (
   <main>
-    <ul className="admin-categories">
+    <ul className="admin-cards">
       {categories.map((category: Category) => (
         <CategoryCard
           title={category.name}

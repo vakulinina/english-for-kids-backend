@@ -608,14 +608,14 @@ th:hover {
   cursor: pointer;
 }
 
-.admin-categories {
+.admin-cards {
   display: grid;
   grid-template-columns: repeat(4,1fr);
   grid-template-rows: repeat(2,auto);
   grid-gap: 15px;
   justify-items: center;
   max-width: 1440px;
-  margin: 0 auto 40px;
+  margin: 0 auto 80px;
 }
 
 .admin-category-card {
@@ -749,6 +749,7 @@ th:hover {
 
 .admin-word-card-img {
   width: 100%;
+  height: 132px;
 }
 
 .admin-word-card-input-label {

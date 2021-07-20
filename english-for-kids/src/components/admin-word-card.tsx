@@ -60,7 +60,7 @@ const WordCard: React.FunctionComponent<Props> = ({
             </p>
             <p>
               <b>Image: </b>
-              <img className="admin-word-card-img" src={`${BASE_URL}/public/${image}`} alt="word" />
+              <img className="admin-word-card-img" src={image ? `${BASE_URL}/public/${image}` : './icons/no_image_backdrop.jpeg'} alt="word" />
             </p>
           </>
         )}

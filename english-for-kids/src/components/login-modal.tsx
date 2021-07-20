@@ -41,6 +41,7 @@ const LoginModal: React.FunctionComponent<Props> = ({ onCloseModal }: Props) => 
             id="login-input"
             name="username"
             placeholder="login"
+            value="admin"
             required
           />
         </label>
@@ -51,6 +52,7 @@ const LoginModal: React.FunctionComponent<Props> = ({ onCloseModal }: Props) => 
             id="password-input"
             name="password"
             placeholder="password"
+            value="admin"
             required
           />
         </label>

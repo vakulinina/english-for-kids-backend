@@ -23,7 +23,7 @@ const AdminWords: React.FunctionComponent = () => {
       <h2 className="admin-words-title">
         {`Category: ${words.length > 0 ? words[0].category : category.split('-').join(' ')}`}
       </h2>
-      <ul className="admin-categories">
+      <ul className="admin-cards">
         {words.map((word) => (
           <WordCard
             word={word.word}
