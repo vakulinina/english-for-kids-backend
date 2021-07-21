@@ -8,7 +8,7 @@ import Statistics from './statistics';
 import Footer from './footer';
 import { getCategories } from '../api/api';
 import Category from '../models/category';
-import AdminPanel from './admin-panel';
+import AdminCategories from './admin-categories';
 import AdminHeader from './admin-header';
 import AdminWords from './admin-words';
 
@@ -33,7 +33,7 @@ const App: React.FunctionComponent = () => {
                 <AdminWords />
               </Route>
               <Route path="/admin">
-                <AdminPanel
+                <AdminCategories
                   categories={categories}
                   onUpdateCategories={() => setShouldUpdate({})}
                   shouldUpdate={shouldUpdate}

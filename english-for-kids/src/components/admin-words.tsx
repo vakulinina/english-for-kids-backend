@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import WordCard from './admin-word-card';
 import { getCardsByCategory } from '../api/api';
 import Card from '../models/card';
-import CreateWordCard from './create-word-card';
+import CreateWordCard from './admin-create-word-card';
 import { useLoadMoreWords } from '../common/custom-hooks';
 
 interface UrlParams {

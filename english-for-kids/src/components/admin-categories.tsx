@@ -2,8 +2,8 @@ import React, {
   useState, useRef, useCallback,
 } from 'react';
 import Category from '../models/category';
-import CategoryCard from './category-card';
-import CreateCategoryCard from './create-category-card';
+import CategoryCard from './admin-category-card';
+import CreateCategoryCard from './admin-create-category-card';
 import { useLoadMoreCategories } from '../common/custom-hooks';
 
 interface Props {
@@ -12,7 +12,7 @@ interface Props {
   shouldUpdate: Record<string, unknown>;
 }
 
-const AdminPanel: React.FunctionComponent<Props> = (
+const AdminCategories: React.FunctionComponent<Props> = (
   { categories, onUpdateCategories, shouldUpdate }: Props,
 ) => {
   const [pageNumber, setPageNumber] = useState(2);
@@ -59,4 +59,4 @@ const AdminPanel: React.FunctionComponent<Props> = (
   );
 };
 
-export default AdminPanel;
+export default AdminCategories;
